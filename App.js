@@ -1,20 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator } from "react-native";
+// import CategoriesScreen from './Screens/CategoriesScreen';
+// import ProductsScreen from './Screens/ProductsScreen';
+import { useFonts } from "expo-font";
+// import DetailScreen from './Screens/DetailScreen';
+import { SafeAreaView } from "react-native-safe-area-context";
+import MainNavigator from "./Navigation";
 
 export default function App() {
+  /*   const [categorySelected, setCategorySelected] = useState(null);
+  const [productSelected, setProductSelected] = useState(null);
+
+  const handleCategory = (category) => {
+    // console.log(category);
+    setCategorySelected(category)
+  }
+
+  const handleProduct = (product) => {
+    // console.log(category);
+    setProductSelected(product)
+  } */
+
+  // console.log(categorySelected);
+  // console.log(productSelected);
+
+  const [loaded] = useFonts({
+    Koulen: require("./assets/Fonts/Koulen/Koulen-Regular.ttf"),
+    LatoRegular: require("./assets/Fonts/Lato/Lato-Regular.ttf"),
+  });
+
+  if (!loaded) {
+    return <ActivityIndicator />;
+  }
+
+  // console.log(loaded);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    // <SafeAreaView style={{ flex: 1 }}>
+    <MainNavigator />
+    // </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
